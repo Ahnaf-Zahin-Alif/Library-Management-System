@@ -1,5 +1,8 @@
 package ui;
 
+import dao.BookDao;
+import model.Book;
+import  java.util.List;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class ManageBooksFrame extends JFrame {
+    private BookDao bookDao = new BookDao();
     
     private JTextField txtBookId;
 
@@ -147,6 +151,27 @@ bookTable = new JTable(tableModel);
 JScrollPane scrollTable = new JScrollPane(bookTable);
 scrollTable.setBounds(390 , 100 , 520 , 385);
 add(scrollTable);
+
+private void loadBookToTable(){
+    tableModel.setRowCount(0);
+
+    List<Book> books = bookDao.getAllBooks();
+
+    for(Book b : books){
+        tableModel.addRow(new Object[]{
+            
+        })
+        
+    }
+
+}
+
+
+
+
+
+
+
 
 }
 public static void main(String[] args) {
